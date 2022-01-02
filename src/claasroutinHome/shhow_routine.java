@@ -5,7 +5,6 @@
  */
 package claasroutinHome;
 
-import StudentInformaton.*;
 import HomeAndLogin.Home;
 import HomeAndLogin.Login;
 
@@ -18,6 +17,7 @@ import java.sql.Statement;
 import java.util.ArrayList;
 import javax.swing.ImageIcon;
 
+@SuppressWarnings("serial")
 public class shhow_routine extends javax.swing.JFrame {
 
     ResultSet result, result2;
@@ -39,12 +39,12 @@ public class shhow_routine extends javax.swing.JFrame {
 
     }
 
-    @SuppressWarnings("unchecked")
+    
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
-        buttonGroup1 = new javax.swing.ButtonGroup();
-        buttonGroup2 = new javax.swing.ButtonGroup();
+        new javax.swing.ButtonGroup();
+        new javax.swing.ButtonGroup();
         jPanel1 = new javax.swing.JPanel();
         makeRoutine = new javax.swing.JButton();
         editRoutin = new javax.swing.JButton();
@@ -1050,11 +1050,11 @@ public class shhow_routine extends javax.swing.JFrame {
                 statement2 = (Statement) con.createStatement();
                 result2 = statement2.executeQuery(query);
                 result2.next();
-                ArrayList<String> a = new ArrayList();
-                ArrayList<String> a2 = new ArrayList();
-                ArrayList<String> a3 = new ArrayList();
-                ArrayList<String> a4 = new ArrayList();
-                ArrayList<String> a5 = new ArrayList();
+                ArrayList<String> a = new ArrayList<String>();
+                ArrayList<String> a2 = new ArrayList<String>();
+                ArrayList<String> a3 = new ArrayList<String>();
+                ArrayList<String> a4 = new ArrayList<String>();
+                ArrayList<String> a5 = new ArrayList<String>();
 
                 for (int i = 2; i <= 7; i++) {
                     String[] s = result2.getString(i).split(" ");
@@ -1145,11 +1145,11 @@ public class shhow_routine extends javax.swing.JFrame {
                 statement2 = (Statement) con.createStatement();
                 result2 = statement2.executeQuery(query);
                 result2.next();
-                ArrayList<String> a = new ArrayList();
-                ArrayList<String> a2 = new ArrayList();
-                ArrayList<String> a3 = new ArrayList();
-                ArrayList<String> a4 = new ArrayList();
-                ArrayList<String> a5 = new ArrayList();
+                ArrayList<String> a = new ArrayList<String>();
+                ArrayList<String> a2 = new ArrayList<String>();
+                ArrayList<String> a3 = new ArrayList<String>();
+                ArrayList<String> a4 = new ArrayList<String>();
+                ArrayList<String> a5 = new ArrayList<String>();
 
                 for (int i = 2; i <= 7; i++) {
                     String[] s = result2.getString(i).split(" ");
@@ -1268,8 +1268,6 @@ public class shhow_routine extends javax.swing.JFrame {
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton beack;
     private javax.swing.JButton beack1;
-    private javax.swing.ButtonGroup buttonGroup1;
-    private javax.swing.ButtonGroup buttonGroup2;
     private javax.swing.JButton editRoutin;
     private javax.swing.JLabel firstHour;
     private javax.swing.JTextField five1;

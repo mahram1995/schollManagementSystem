@@ -299,7 +299,7 @@ public class RessetPassword extends javax.swing.JFrame {
             result.next();
 
             userName.setText(result.getString(1));
-            System.out.println(result.getString(1));
+           
 
         } catch (SQLException e) {
             System.out.println(e);

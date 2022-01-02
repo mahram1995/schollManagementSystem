@@ -5,9 +5,6 @@ import HomeAndLogin.Login;
 import java.awt.Font;
 import java.awt.Graphics;
 import java.awt.Graphics2D;
-import java.awt.PopupMenu;
-import java.awt.PrintJob;
-import java.awt.Toolkit;
 
 import java.awt.print.PageFormat;
 import java.awt.print.Paper;
@@ -16,6 +13,10 @@ import static java.awt.print.Printable.NO_SUCH_PAGE;
 import static java.awt.print.Printable.PAGE_EXISTS;
 import java.awt.print.PrinterException;
 import java.awt.print.PrinterJob;
+import java.io.File;
+import java.io.FileNotFoundException;
+import java.io.FileOutputStream;
+import java.io.IOException;
 import java.sql.Connection;
 import java.sql.DriverManager;
 import java.sql.ResultSet;
@@ -23,13 +24,20 @@ import java.sql.SQLException;
 import java.sql.Statement;
 import java.time.LocalDateTime;
 import java.time.format.DateTimeFormatter;
+import java.util.ArrayList;
+
+
 import javax.swing.ImageIcon;
-import javax.swing.JFrame;
+
 import javax.swing.JLabel;
 import javax.swing.table.DefaultTableCellRenderer;
 
 import javax.swing.table.DefaultTableModel;
 import javax.swing.table.TableCellRenderer;
+import org.apache.poi.ss.usermodel.Cell;
+import org.apache.poi.xssf.usermodel.XSSFRow;
+import org.apache.poi.xssf.usermodel.XSSFSheet;
+import org.apache.poi.xssf.usermodel.XSSFWorkbook;
 
 public class searchStudent extends javax.swing.JFrame {
 
@@ -530,17 +538,119 @@ public class searchStudent extends javax.swing.JFrame {
 
     private void printActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_printActionPerformed
         // TODO add your handling code here:
-
+ 
         try {
-            Toolkit tkp = jPanel3.getToolkit();
-            PrintJob pjp = tkp.getPrintJob(this, null, null);
-            Graphics g = pjp.getGraphics();
-            jPanel3.print(g);
-            g.dispose();
-            pjp.end();
+             statement = (Statement) con.createStatement();
+            String query = "SELECT* FROM schooldatabase." + clase.getSelectedItem() + "_" + shift.getSelectedItem();
+            result = statement.executeQuery(query);
+            
+            ArrayList roll= new ArrayList();
+            ArrayList clas= new ArrayList();
+            ArrayList Shift= new ArrayList();
+            ArrayList name= new ArrayList();
+            ArrayList mobile= new ArrayList();
+            ArrayList gender= new ArrayList();
+            ArrayList address= new ArrayList();
+            ArrayList birthday= new ArrayList();
+           
+            
+            while (result.next()) {
 
-        } catch (Exception e) {
+            roll.add(result.getString(1));
+            clas.add(result.getString(2));
+            Shift.add(result.getString(3));
+            name.add(result.getString(4));
+            mobile.add(result.getString(9));
+            gender.add(result.getString(7));
+            address.add(result.getString(10));
+            birthday.add(result.getString(8));
+           
+               
+            }
+
+        
+           
+        // creat a workbook
+        XSSFWorkbook workbook= new XSSFWorkbook();
+        
+        // creat spretsheet
+        XSSFSheet sheet= workbook.createSheet(clase.getSelectedItem() + "_" + shift.getSelectedItem());
+        
+        // creat a row objcet
+        XSSFRow row;
+        
+        // creat cells and set value
+        row= sheet.createRow(0);
+        Cell cell0= row.createCell(0);
+        Cell cell1= row.createCell(1);
+        Cell cell2= row.createCell(2);
+        Cell cell3= row.createCell(3);
+        Cell cell4= row.createCell(4);
+        Cell cell5= row.createCell(5);
+        Cell cell6= row.createCell(6);
+        Cell cell7= row.createCell(7);
+        
+        cell0.setCellValue("roll");
+        cell1.setCellValue("class");
+        cell2.setCellValue("Shisf");
+        cell3.setCellValue("name");
+        cell4.setCellValue("gender.");
+        cell5.setCellValue("birthday.");
+        cell6.setCellValue("mobile");
+        cell7.setCellValue("address.");
+        
+        
+        // creat cells and rows for the data
+        for (int i = 0; i < roll.size(); i++) {
+            row=sheet.createRow(i+1);
+            for (int j = 0; j <8; j++) {
+                Cell cell=row.createCell(j);
+                
+                switch (cell.getColumnIndex()) {
+                    case 0:
+                        cell.setCellValue(roll.get(i).toString());
+                        break;
+                    case 1:
+                       cell.setCellValue(clas.get(i).toString());
+                        break;
+                    case 2:
+                        cell.setCellValue(Shift.get(i).toString());
+                        break;
+                    case 3:
+                        cell.setCellValue(name.get(i).toString());
+                        break;
+                    case 4:
+                        cell.setCellValue(gender.get(i).toString());
+                        break;
+                    case 5:
+                        cell.setCellValue(birthday.get(i).toString());
+                        break;
+                    case 6:
+                        cell.setCellValue(mobile.get(i).toString());
+                        break;
+                    case 7:
+                        cell.setCellValue(address.get(i).toString());
+                        break;
+                   
+                    default:
+                        break;
+                }   
+            } 
         }
+        
+        // writing the created excel file
+        
+           FileOutputStream out= new FileOutputStream( new File(clase.getSelectedItem() + "_" + shift.getSelectedItem()+".xlsx")); 
+           workbook.write(out);
+           out.close();
+            System.out.println("excel fill created successfully");
+       
+        } catch (IOException | SQLException e) {
+        }
+           
+           
+            
+        
 
 
     }//GEN-LAST:event_printActionPerformed

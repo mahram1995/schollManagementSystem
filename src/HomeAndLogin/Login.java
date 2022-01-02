@@ -18,16 +18,12 @@ import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
 import java.util.ArrayList;
-import static java.util.Collections.list;
 
 import javax.swing.ImageIcon;
 import javax.swing.JOptionPane;
 
 import javax.swing.table.DefaultTableModel;
-import payment.Payment;
-import result.AcademicTranscript;
-import result.reultInfo;
-import teacherEmployes.Teacher_information;
+
 
 public class Login extends javax.swing.JFrame {
 

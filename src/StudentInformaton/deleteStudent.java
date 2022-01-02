@@ -514,6 +514,7 @@ public class deleteStudent extends javax.swing.JFrame {
                 fatherName.setText(result.getString(5));
                 motherName.setText(result.getString(6));
                 String p = result.getString(13);
+                    System.out.println(p);
                 imageLabel.setIcon(seticon(p, null));
                 }
                 

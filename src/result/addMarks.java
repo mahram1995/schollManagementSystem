@@ -1132,7 +1132,7 @@ public double gradeResult(int number) {
 
             } else {
                 // inser data to the table
-                String insert = "INSERT INTO  schooldatabase.resultsheet VALUES (?,?,?,?,?,?,?,?,?,?,?)";   // insert data to Database
+                String insert = "INSERT INTO  schooldatabase.resultsheet VALUES (?,?,?,?,?,?,?,?,?,?,?,?,?)";   // insert data to Database
                 PreparedStatement add = con.prepareStatement(insert);
                 add.setInt(1, Integer.parseInt(Roll));
                 add.setString(2, examName);
@@ -1145,6 +1145,8 @@ public double gradeResult(int number) {
                 add.setInt(9, Integer.parseInt(TotalNumber));
                 add.setDouble(10, Double.parseDouble(grade.getText()));
                 add.setString(11, CGPA);
+                add.setString(12, classs.getText());
+                add.setString(13, shift.getText());
                 if (add.executeUpdate() > 0) {
                     JOptionPane.showMessageDialog(rootPane, " Student information add successfully");
                 }

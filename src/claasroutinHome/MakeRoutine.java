@@ -67,12 +67,12 @@ public final class MakeRoutine extends javax.swing.JFrame {
    
 
 
-    @SuppressWarnings("unchecked")
+    
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
-        buttonGroup1 = new javax.swing.ButtonGroup();
-        buttonGroup2 = new javax.swing.ButtonGroup();
+        new javax.swing.ButtonGroup();
+        new javax.swing.ButtonGroup();
         jPanel1 = new javax.swing.JPanel();
         home = new javax.swing.JButton();
         beack = new javax.swing.JButton();
@@ -667,8 +667,6 @@ public final class MakeRoutine extends javax.swing.JFrame {
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton beack;
-    private javax.swing.ButtonGroup buttonGroup1;
-    private javax.swing.ButtonGroup buttonGroup2;
     private javax.swing.JComboBox<String> classs;
     private javax.swing.JComboBox<String> eday;
     private javax.swing.JButton editRoutin;
